@@ -8,7 +8,7 @@
         <!--User View Controller-->
         <scene sceneID="uCi-1K-5qd">
             <objects>
-                <viewController id="AHI-e3-Ajo" userLabel="User View Controller" customClass="ReposViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AHI-e3-Ajo" userLabel="User View Controller" customClass="ReposViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gnQ-9F-wnd"/>
                         <viewControllerLayoutGuide type="bottom" id="jIK-Zp-lOU"/>
