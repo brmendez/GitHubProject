@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class Repo {
     
     var name : String
@@ -18,26 +17,26 @@ class Repo {
         self.name = name
     }
     
-    class func parseJSONDataIntoRepo(rawJSONData : NSData) -> [Repo]? {
+    
+    class func parseJSONDataIntoRepo(rawJSONData : NSData) -> [Repo] {
         var error : NSError?
+        
+        var repoArray = [Repo]()
+
         if let JSONDictionary = NSJSONSerialization.JSONObjectWithData(rawJSONData, options: nil, error: &error) as? NSDictionary {
-//            println(JSONDictionary)
-            var repoArray = [Repo]()
-            
+
             
             if let itemsArray = JSONDictionary["items"] as? NSArray{
-//            println(itemsArray)
             
-                for repoDictionary in itemsArray {
-                    var tempName = repoDictionary["name"] as String
-//            println(tempName)
+                for objectInArray in itemsArray {
+                    
+                    var tempName = objectInArray["name"] as String
                     var newRepoObject = Repo(name: tempName)
                     repoArray.append(newRepoObject)
                 }
                 
-                return repoArray
             }
         }
-        return nil
+        return repoArray
     }
 }

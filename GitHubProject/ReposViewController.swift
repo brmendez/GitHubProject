@@ -8,33 +8,44 @@
 
 import UIKit
 
-class ReposViewController: UIViewController {
+class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    @IBOutlet weak var repoLabel: UILabel!
+    var networkController = NetworkController()
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var repoArray = [Repo]()
     var test: String?
-    var networkController = NetworkController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let urlString = "http://localhost:3000"
-        let url = NSURL(string: urlString)
-        self.networkController.fetchGitHubRepo(url!, completionHandler: { (errorDescription, repos) -> (Void) in
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                if errorDescription == nil {
-                    self.repoLabel.text = self.repoArray[0].name
-                } else {
-                    println("there was an error")
-                }
-            })
-        })
-//        self.repoLabel.text = repoArray[0].name
-        // println(self.repoArray[0].name)
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        searchBar.showsScopeBar = true
+        searchBar.delegate = self
+        
     }
-
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.repoArray.count
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("REPO_CELL", forIndexPath: indexPath) as UITableViewCell
+        let repo = self.repoArray[indexPath.row]
+        cell.textLabel?.text = self.repoArray[indexPath.row].name
+        
+        return cell
+    }
+    
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        var userSearch = searchBar.text
+        NetworkController.sharedInstance.fetchGitHubRepo(userSearch) { (errorDescription, repos) -> (Void) in
+            self.repoArray = repos
+            self.tableView.reloadData()
+        }
+    }
+    
 }

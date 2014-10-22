@@ -12,7 +12,6 @@
 		45441FF119F5C2910097C1C6 /* SplitViewContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45441FF019F5C2910097C1C6 /* SplitViewContainerController.swift */; };
 		45BA14E419F5ABE20017B3EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA14E319F5ABE20017B3EB /* AppDelegate.swift */; };
 		45BA14E719F5ABE20017B3EB /* GitHubProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45BA14E519F5ABE20017B3EB /* GitHubProject.xcdatamodeld */; };
-		45BA14E919F5ABE20017B3EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA14E819F5ABE20017B3EB /* ViewController.swift */; };
 		45BA14EC19F5ABE20017B3EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45BA14EA19F5ABE20017B3EB /* Main.storyboard */; };
 		45BA14EE19F5ABE20017B3EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45BA14ED19F5ABE20017B3EB /* Images.xcassets */; };
 		45BA14F119F5ABE20017B3EB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BA14EF19F5ABE20017B3EB /* LaunchScreen.xib */; };
@@ -38,7 +37,6 @@
 		45BA14E219F5ABE20017B3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45BA14E319F5ABE20017B3EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45BA14E619F5ABE20017B3EB /* GitHubProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitHubProject.xcdatamodel; sourceTree = "<group>"; };
-		45BA14E819F5ABE20017B3EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		45BA14EB19F5ABE20017B3EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45BA14ED19F5ABE20017B3EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		45BA14F019F5ABE20017B3EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				45BA14E319F5ABE20017B3EB /* AppDelegate.swift */,
-				45BA14E819F5ABE20017B3EB /* ViewController.swift */,
 				45BA14EA19F5ABE20017B3EB /* Main.storyboard */,
 				45441FF019F5C2910097C1C6 /* SplitViewContainerController.swift */,
 				4530B58D19F5E65900B9DCCC /* ReposViewController.swift */,
@@ -236,7 +233,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				45BA150919F5B5F90017B3EB /* NetworkController.swift in Sources */,
-				45BA14E919F5ABE20017B3EB /* ViewController.swift in Sources */,
 				45BA14E719F5ABE20017B3EB /* GitHubProject.xcdatamodeld in Sources */,
 				4530B58E19F5E65900B9DCCC /* ReposViewController.swift in Sources */,
 				4530B58B19F5D7E200B9DCCC /* Repo.swift in Sources */,

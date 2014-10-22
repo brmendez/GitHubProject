@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Repos View Controller-->
+        <!--User View Controller-->
         <scene sceneID="uCi-1K-5qd">
             <objects>
-                <viewController id="AHI-e3-Ajo" customClass="ReposViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AHI-e3-Ajo" userLabel="User View Controller" customClass="ReposViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gnQ-9F-wnd"/>
                         <viewControllerLayoutGuide type="bottom" id="jIK-Zp-lOU"/>
@@ -17,22 +17,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIN-A8-zbS">
-                                <rect key="frame" x="44" y="75" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="35" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LPs-PH-1Ey">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="QhN-TC-7fW">
+                                    <rect key="frame" x="-36" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="REPO_CELL" rowHeight="35" id="jrs-T4-3ld">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jrs-T4-3ld" id="Wy6-7G-XpE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="AHI-e3-Ajo" id="Z6R-bo-KFj"/>
+                                    <outlet property="delegate" destination="AHI-e3-Ajo" id="amX-oL-63E"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LPs-PH-1Ey" secondAttribute="trailing" constant="-16" id="IPm-hK-nxg"/>
+                            <constraint firstItem="LPs-PH-1Ey" firstAttribute="leading" secondItem="pW5-E8-YXp" secondAttribute="leadingMargin" constant="-16" id="Nnh-VP-Ozz"/>
+                            <constraint firstItem="LPs-PH-1Ey" firstAttribute="top" secondItem="gnQ-9F-wnd" secondAttribute="bottom" id="OaO-IB-q1n"/>
+                            <constraint firstItem="jIK-Zp-lOU" firstAttribute="top" secondItem="LPs-PH-1Ey" secondAttribute="bottom" id="SGP-jW-qfU"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="repoLabel" destination="oIN-A8-zbS" id="fcX-UM-WVA"/>
+                        <outlet property="searchBar" destination="QhN-TC-7fW" id="eKG-FN-oaK"/>
+                        <outlet property="tableView" destination="LPs-PH-1Ey" id="XJ8-t6-JVJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQ5-Lv-SsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="-323"/>
+            <point key="canvasLocation" x="1568" y="-98"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aRC-4h-338">
@@ -45,12 +67,11 @@
                     <view key="view" contentMode="scaleToFill" id="moN-ht-ctG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15686274510000001" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bY-Kk-3eO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="347"/>
+            <point key="canvasLocation" x="1568" y="602"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dHH-yB-eM0">
@@ -68,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwK-bU-jGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="1007"/>
+            <point key="canvasLocation" x="1568" y="1311"/>
         </scene>
         <!--Split View Container Controller-->
         <scene sceneID="kUk-eE-64D">
@@ -100,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDH-dy-87B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1389" y="352"/>
+            <point key="canvasLocation" x="-1333" y="352"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="3Ud-ac-iWX">
@@ -191,7 +212,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1J-yV-0Qt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="734"/>
+            <point key="canvasLocation" x="716" y="734"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pzz-Ms-oXr">
@@ -220,7 +241,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78X-up-52n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-704" y="274"/>
+            <point key="canvasLocation" x="-656" y="352"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
