@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        println(url)
+        println("App delegate: \(url)")
         //when you run OAuthAccess this RUNS
         NetworkController.sharedInstance.handleOAuthURL(url)
         

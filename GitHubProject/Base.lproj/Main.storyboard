@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--User View Controller-->
+        <!--Repo View Controller-->
         <scene sceneID="uCi-1K-5qd">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AHI-e3-Ajo" userLabel="User View Controller" customClass="ReposViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AHI-e3-Ajo" userLabel="Repo View Controller" customClass="ReposViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gnQ-9F-wnd"/>
                         <viewControllerLayoutGuide type="bottom" id="jIK-Zp-lOU"/>
@@ -42,9 +42,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="LPs-PH-1Ey" secondAttribute="trailing" constant="-16" id="IPm-hK-nxg"/>
+                            <constraint firstItem="jIK-Zp-lOU" firstAttribute="top" secondItem="LPs-PH-1Ey" secondAttribute="bottom" id="NFc-9E-qYH"/>
                             <constraint firstItem="LPs-PH-1Ey" firstAttribute="leading" secondItem="pW5-E8-YXp" secondAttribute="leadingMargin" constant="-16" id="Nnh-VP-Ozz"/>
-                            <constraint firstItem="LPs-PH-1Ey" firstAttribute="top" secondItem="gnQ-9F-wnd" secondAttribute="bottom" id="OaO-IB-q1n"/>
-                            <constraint firstItem="jIK-Zp-lOU" firstAttribute="top" secondItem="LPs-PH-1Ey" secondAttribute="bottom" id="SGP-jW-qfU"/>
+                            <constraint firstItem="LPs-PH-1Ey" firstAttribute="top" secondItem="gnQ-9F-wnd" secondAttribute="bottom" id="VUV-o2-2we"/>
                         </constraints>
                     </view>
                     <connections>
@@ -54,12 +54,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQ5-Lv-SsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="-98"/>
+            <point key="canvasLocation" x="1568" y="-86"/>
         </scene>
-        <!--View Controller-->
+        <!--Users View Controller-->
         <scene sceneID="aRC-4h-338">
             <objects>
-                <viewController id="qQf-Ga-YbR" sceneMemberID="viewController">
+                <viewController id="qQf-Ga-YbR" customClass="UsersViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nnb-HN-8tA"/>
                         <viewControllerLayoutGuide type="bottom" id="vvS-0U-gzi"/>
@@ -67,7 +67,71 @@
                     <view key="view" contentMode="scaleToFill" id="moN-ht-ctG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Ph-Ck-Py2">
+                                <rect key="frame" x="0.0" y="157" width="600" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aWm-mg-2ad">
+                                    <size key="itemSize" width="130" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="USER_CELL" id="Wcq-oQ-ASz" customClass="UserCell" customModule="GitHubProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WqV-uD-qB9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="130" id="iVs-vv-7Wm"/>
+                                                        <constraint firstAttribute="width" constant="130" id="qqy-9M-k2A"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFy-Ry-mHf">
+                                                    <rect key="frame" x="0.0" y="131" width="130" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.15686274510000001" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="CFy-Ry-mHf" firstAttribute="top" secondItem="WqV-uD-qB9" secondAttribute="bottom" constant="1" id="4JA-pF-g6w"/>
+                                            <constraint firstAttribute="bottom" secondItem="CFy-Ry-mHf" secondAttribute="bottom" constant="8" id="589-pF-Sbt"/>
+                                            <constraint firstItem="WqV-uD-qB9" firstAttribute="top" secondItem="Wcq-oQ-ASz" secondAttribute="top" id="6Pf-qD-JoZ"/>
+                                            <constraint firstItem="WqV-uD-qB9" firstAttribute="leading" secondItem="Wcq-oQ-ASz" secondAttribute="leading" id="Izv-7w-MMS"/>
+                                            <constraint firstAttribute="trailing" secondItem="WqV-uD-qB9" secondAttribute="trailing" id="SqG-Cr-d2K"/>
+                                            <constraint firstAttribute="trailing" secondItem="CFy-Ry-mHf" secondAttribute="trailing" id="TqA-di-Icm"/>
+                                            <constraint firstItem="CFy-Ry-mHf" firstAttribute="leading" secondItem="Wcq-oQ-ASz" secondAttribute="leading" id="eiN-uY-WPB"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="githubNameLabel" destination="CFy-Ry-mHf" id="FW1-h9-48r"/>
+                                            <outlet property="imageView" destination="WqV-uD-qB9" id="UMQ-bx-uq0"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azl-GJ-P59">
+                                <rect key="frame" x="0.0" y="113" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="0Ph-Ck-Py2" firstAttribute="top" secondItem="nnb-HN-8tA" secondAttribute="bottom" id="BsQ-BM-xiV"/>
+                            <constraint firstItem="vvS-0U-gzi" firstAttribute="top" secondItem="0Ph-Ck-Py2" secondAttribute="bottom" id="HGa-rC-rYA"/>
+                            <constraint firstAttribute="trailing" secondItem="0Ph-Ck-Py2" secondAttribute="trailing" id="JR1-MQ-GX3"/>
+                            <constraint firstItem="0Ph-Ck-Py2" firstAttribute="leading" secondItem="moN-ht-ctG" secondAttribute="leading" id="rDG-ps-IYJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="0Ph-Ck-Py2" id="X15-li-tIY"/>
+                        <outlet property="searchBar" destination="azl-GJ-P59" id="lsb-Cs-JSb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bY-Kk-3eO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,7 +300,6 @@
                 <splitViewController id="SUq-ZL-OAw" sceneMemberID="viewController">
                     <connections>
                         <segue destination="wLs-SR-M2L" kind="relationship" relationship="masterViewController" id="7Ky-wD-pq0"/>
-                        <segue destination="AHI-e3-Ajo" kind="relationship" relationship="detailViewController" id="jKt-1R-NmA"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78X-up-52n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,7 +307,4 @@
             <point key="canvasLocation" x="-656" y="352"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="XLr-ob-TEb"/>
-    </inferredMetricsTieBreakers>
 </document>

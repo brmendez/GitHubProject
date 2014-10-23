@@ -17,7 +17,6 @@ class Repo {
         self.name = name
     }
     
-    
     class func parseJSONDataIntoRepo(rawJSONData : NSData) -> [Repo] {
         var error : NSError?
         

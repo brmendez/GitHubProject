@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
+
+enum FetchType {
+    case Repos, Users
+}
+
+
 class NetworkController {
-    
     
     let clientID = "client_id=90540d88c4b7fd51e6bb"
     let clientSecret = "client_secret=1d20b4db83c3603def8e69d49fe7697c7e0dd75f"
@@ -18,6 +23,8 @@ class NetworkController {
     let scope = "scope=user,repo"
     let redirectURL = "redirect_uri=GitHubProject://test"
     let githubPOSTURL = "https://github.com/login/oauth/access_token"
+    
+    var imageQueue = NSOperationQueue()
     
     class var sharedInstance: NetworkController {
         struct Static {
@@ -81,25 +88,50 @@ class NetworkController {
         dataTask.resume()
     }
 
-    func fetchGitHubRepo(userSearch: String, completionHandler: (errorDescription: String?, repos: [Repo]) -> (Void)) {
+    func fetchGitHub(searchString: String, type: FetchType, completionHandler: (errorDescription: String?, returnedArray: [AnyObject]) -> (Void)) {
         let session = NSURLSession.sharedSession()
-        let url = NSURL(string: "https://api.github.com/search/repositories?q=tetris")
+        
+        
+        //implemented
+        let searchUserURL =  "https://api.github.com/search/users?q="
+        //implemented
+        let searchReposURL = "https://api.github.com/search/repositories?q="
+        let cleanString = searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: nil, range: nil)
+        var url : NSURL?
+        
+        switch type {
+        case .Users:
+            url = NSURL(string: (searchUserURL + cleanString))?
+        case .Repos:
+            url = NSURL(string: (searchReposURL + cleanString))?
+        default:
+            println("Wrong search type")
+        }
+        
         let request = NSMutableURLRequest(URL: url!)
         let token = NSUserDefaults.standardUserDefaults().objectForKey("OAuth") as String
         
         request.setValue("token " + token, forHTTPHeaderField: "Authorization")
         
         let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            println(error)
-            var repos : [Repo]?
             if let httpResponse = response as? NSHTTPURLResponse {
-                println(response)
                 switch httpResponse.statusCode {
                 case 200...299:
-                    println("in 200's")
-                    //returns an array of Repo objects from parseJSONData
-                repos = Repo.parseJSONDataIntoRepo(data)
-                
+                println("In the 200's!")
+                var returnedArray : [AnyObject]?
+                switch type {
+                case .Repos:
+                    returnedArray = Repo.parseJSONDataIntoRepo(data)
+                case .Users:
+                    println("in users case: \(returnedArray)")
+                    returnedArray = User.parseJSONDataIntoUser(data)
+                default:
+                    println("No parsed info returned")
+                }
+                //moved from outside of connection numbers
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                    completionHandler(errorDescription: nil, returnedArray: returnedArray!)
+                })
                 //we are then put on to a background queue
                 
                 case 400...499:
@@ -112,10 +144,27 @@ class NetworkController {
                 
                 }
             }
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                completionHandler(errorDescription: nil, repos: repos!)
-            })
         })
         dataTask.resume()
     }
+    
+    
+    func downloadUserImage(selectedUser : User, completionHandler: (image : UIImage) -> (Void)) {
+        self.imageQueue.addOperationWithBlock { () -> Void in
+            var avatarImage : UIImage?
+            
+            let url = NSURL(string: selectedUser.imageURL!)
+            let imageData = NSData(contentsOfURL: url!)
+            avatarImage = UIImage(data: imageData!)
+            selectedUser.image = avatarImage
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                completionHandler(image: avatarImage!)
+            })
+        }
+    }
+    
+    
+    
+    
 }

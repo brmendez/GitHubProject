@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4530B58B19F5D7E200B9DCCC /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530B58A19F5D7E200B9DCCC /* Repo.swift */; };
 		4530B58E19F5E65900B9DCCC /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530B58D19F5E65900B9DCCC /* ReposViewController.swift */; };
+		453E832D19F84A5500E0CBC3 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E832C19F84A5500E0CBC3 /* UsersViewController.swift */; };
+		453E832F19F84E6C00E0CBC3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E832E19F84E6C00E0CBC3 /* User.swift */; };
+		453E833619F853C800E0CBC3 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E833419F853C800E0CBC3 /* UserCell.swift */; };
 		45441FF119F5C2910097C1C6 /* SplitViewContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45441FF019F5C2910097C1C6 /* SplitViewContainerController.swift */; };
 		45BA14E419F5ABE20017B3EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA14E319F5ABE20017B3EB /* AppDelegate.swift */; };
 		45BA14E719F5ABE20017B3EB /* GitHubProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45BA14E519F5ABE20017B3EB /* GitHubProject.xcdatamodeld */; };
@@ -32,6 +35,9 @@
 /* Begin PBXFileReference section */
 		4530B58A19F5D7E200B9DCCC /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		4530B58D19F5E65900B9DCCC /* ReposViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
+		453E832C19F84A5500E0CBC3 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		453E832E19F84E6C00E0CBC3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		453E833419F853C800E0CBC3 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCell.swift; path = ../UserCell.swift; sourceTree = "<group>"; };
 		45441FF019F5C2910097C1C6 /* SplitViewContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewContainerController.swift; sourceTree = "<group>"; };
 		45BA14DE19F5ABE20017B3EB /* GitHubProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BA14E219F5ABE20017B3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,8 +74,29 @@
 			isa = PBXGroup;
 			children = (
 				4530B58A19F5D7E200B9DCCC /* Repo.swift */,
+				453E832E19F84E6C00E0CBC3 /* User.swift */,
+				453E833419F853C800E0CBC3 /* UserCell.swift */,
 			);
 			name = "Model Layer";
+			sourceTree = "<group>";
+		};
+		453E833019F84ED700E0CBC3 /* Controller Layer */ = {
+			isa = PBXGroup;
+			children = (
+				4530B58D19F5E65900B9DCCC /* ReposViewController.swift */,
+				453E832C19F84A5500E0CBC3 /* UsersViewController.swift */,
+				45BA150819F5B5F90017B3EB /* NetworkController.swift */,
+			);
+			name = "Controller Layer";
+			sourceTree = "<group>";
+		};
+		453E833119F84EF200E0CBC3 /* View Layer */ = {
+			isa = PBXGroup;
+			children = (
+				45BA14EA19F5ABE20017B3EB /* Main.storyboard */,
+				45441FF019F5C2910097C1C6 /* SplitViewContainerController.swift */,
+			);
+			name = "View Layer";
 			sourceTree = "<group>";
 		};
 		45BA14D519F5ABE20017B3EB = {
@@ -94,10 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				45BA14E319F5ABE20017B3EB /* AppDelegate.swift */,
-				45BA14EA19F5ABE20017B3EB /* Main.storyboard */,
-				45441FF019F5C2910097C1C6 /* SplitViewContainerController.swift */,
-				4530B58D19F5E65900B9DCCC /* ReposViewController.swift */,
-				45BA150819F5B5F90017B3EB /* NetworkController.swift */,
+				453E833119F84EF200E0CBC3 /* View Layer */,
+				453E833019F84ED700E0CBC3 /* Controller Layer */,
 				4530B58C19F5D7ED00B9DCCC /* Model Layer */,
 				45BA14ED19F5ABE20017B3EB /* Images.xcassets */,
 				45BA14EF19F5ABE20017B3EB /* LaunchScreen.xib */,
@@ -235,6 +260,9 @@
 				45BA150919F5B5F90017B3EB /* NetworkController.swift in Sources */,
 				45BA14E719F5ABE20017B3EB /* GitHubProject.xcdatamodeld in Sources */,
 				4530B58E19F5E65900B9DCCC /* ReposViewController.swift in Sources */,
+				453E832D19F84A5500E0CBC3 /* UsersViewController.swift in Sources */,
+				453E832F19F84E6C00E0CBC3 /* User.swift in Sources */,
+				453E833619F853C800E0CBC3 /* UserCell.swift in Sources */,
 				4530B58B19F5D7E200B9DCCC /* Repo.swift in Sources */,
 				45BA14E419F5ABE20017B3EB /* AppDelegate.swift in Sources */,
 				45441FF119F5C2910097C1C6 /* SplitViewContainerController.swift in Sources */,

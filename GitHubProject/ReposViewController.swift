@@ -34,7 +34,7 @@ class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("REPO_CELL", forIndexPath: indexPath) as UITableViewCell
         let repo = self.repoArray[indexPath.row]
-        cell.textLabel?.text = self.repoArray[indexPath.row].name
+        cell.textLabel?.text = repo.name
         
         return cell
     }
@@ -42,10 +42,16 @@ class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         var userSearch = searchBar.text
-        NetworkController.sharedInstance.fetchGitHubRepo(userSearch) { (errorDescription, repos) -> (Void) in
-            self.repoArray = repos
+        
+        NetworkController.sharedInstance.fetchGitHub(userSearch, type: FetchType.Repos) { (errorDescription, returnedArray) -> (Void) in
+            println("In repos VC!")
+            self.repoArray = returnedArray as [Repo]
             self.tableView.reloadData()
         }
+        
+//        NetworkController.sharedInstance.fetchGitHub(userSearch) { (errorDescription, repos) -> (Void) in
+//            self.repoArray = repos
+//            self.tableView.reloadData()
+//        }
     }
-    
 }
