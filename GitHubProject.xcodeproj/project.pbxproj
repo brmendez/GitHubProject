@@ -20,6 +20,9 @@
 		45BA14F119F5ABE20017B3EB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BA14EF19F5ABE20017B3EB /* LaunchScreen.xib */; };
 		45BA14FD19F5ABE20017B3EB /* GitHubProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA14FC19F5ABE20017B3EB /* GitHubProjectTests.swift */; };
 		45BA150919F5B5F90017B3EB /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA150819F5B5F90017B3EB /* NetworkController.swift */; };
+		45CD764F19F99D4E008EBE82 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD764E19F99D4E008EBE82 /* UserDetailViewController.swift */; };
+		45E6FBA819F9B8B300974E65 /* ShowImageAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E6FBA719F9B8B300974E65 /* ShowImageAnimator.swift */; };
+		45E6FBAA19F9BC4100974E65 /* HideImageAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E6FBA919F9BC4100974E65 /* HideImageAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		45BA14FB19F5ABE20017B3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45BA14FC19F5ABE20017B3EB /* GitHubProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubProjectTests.swift; sourceTree = "<group>"; };
 		45BA150819F5B5F90017B3EB /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		45CD764E19F99D4E008EBE82 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		45E6FBA719F9B8B300974E65 /* ShowImageAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageAnimator.swift; sourceTree = "<group>"; };
+		45E6FBA919F9BC4100974E65 /* HideImageAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideImageAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 		4530B58C19F5D7ED00B9DCCC /* Model Layer */ = {
 			isa = PBXGroup;
 			children = (
+				45E6FBA719F9B8B300974E65 /* ShowImageAnimator.swift */,
+				45E6FBA919F9BC4100974E65 /* HideImageAnimator.swift */,
 				4530B58A19F5D7E200B9DCCC /* Repo.swift */,
 				453E832E19F84E6C00E0CBC3 /* User.swift */,
 				453E833419F853C800E0CBC3 /* UserCell.swift */,
@@ -85,6 +93,7 @@
 			children = (
 				4530B58D19F5E65900B9DCCC /* ReposViewController.swift */,
 				453E832C19F84A5500E0CBC3 /* UsersViewController.swift */,
+				45CD764E19F99D4E008EBE82 /* UserDetailViewController.swift */,
 				45BA150819F5B5F90017B3EB /* NetworkController.swift */,
 			);
 			name = "Controller Layer";
@@ -259,10 +268,13 @@
 			files = (
 				45BA150919F5B5F90017B3EB /* NetworkController.swift in Sources */,
 				45BA14E719F5ABE20017B3EB /* GitHubProject.xcdatamodeld in Sources */,
+				45E6FBAA19F9BC4100974E65 /* HideImageAnimator.swift in Sources */,
+				45E6FBA819F9B8B300974E65 /* ShowImageAnimator.swift in Sources */,
 				4530B58E19F5E65900B9DCCC /* ReposViewController.swift in Sources */,
 				453E832D19F84A5500E0CBC3 /* UsersViewController.swift in Sources */,
 				453E832F19F84E6C00E0CBC3 /* User.swift in Sources */,
 				453E833619F853C800E0CBC3 /* UserCell.swift in Sources */,
+				45CD764F19F99D4E008EBE82 /* UserDetailViewController.swift in Sources */,
 				4530B58B19F5D7E200B9DCCC /* Repo.swift in Sources */,
 				45BA14E419F5ABE20017B3EB /* AppDelegate.swift in Sources */,
 				45441FF119F5C2910097C1C6 /* SplitViewContainerController.swift in Sources */,

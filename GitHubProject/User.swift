@@ -18,7 +18,6 @@ class User {
     init (name: String, imageURL: String) {
         self.name = name
         self.imageURL = imageURL
-//        self.image = image
     }
     
     class func parseJSONDataIntoUser(rawJSONData : NSData) -> [User]? {
@@ -27,7 +26,6 @@ class User {
         var userArray = [User]()
         
         if let JSONDictionary = NSJSONSerialization.JSONObjectWithData(rawJSONData, options: nil, error: &error) as? NSDictionary {
-            
             
             if let itemsArray = JSONDictionary["items"] as? NSArray {
                 
@@ -47,3 +45,5 @@ class User {
         return nil
     }
 }
+
+

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate {
 
     var window: UIWindow?
     
@@ -119,4 +119,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
