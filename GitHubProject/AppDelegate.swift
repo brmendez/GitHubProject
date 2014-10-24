@@ -13,6 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate {
 
     var window: UIWindow?
+    var networkController = NetworkController()
     
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
@@ -23,7 +24,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
         return true
     }
     
-    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        // This is called whenever during all navigation operations
+        
+        // Only return a custom animator for two view controller types
+        if let mainViewController = fromVC as? UsersViewController {
+            let animator = ShowImageAnimator()
+            animator.origin = mainViewController.origin
+            
+            return animator
+        }
+        else if let imageViewController = fromVC as? UserDetailViewController {
+            let animator = HideImageAnimator()
+            animator.origin = imageViewController.reverseOrigin
+            
+            return animator
+        }
+        
+        // All other types use default transition
+        return nil
+    }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

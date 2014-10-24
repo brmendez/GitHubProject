@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserDetailViewController: UIViewController {
+class UserDetailViewController: UIViewController, UINavigationControllerDelegate {
 
     //needed to create this to catch the imageview from UsersViewController
     var image : UIImage?
@@ -19,6 +19,9 @@ class UserDetailViewController: UIViewController {
     //outlets aren't instantiated until VIEWDIDLOAD. If set prior, will crash
     override func viewDidLoad() {
         super.viewDidLoad()
+
+//        self.navigationController?.delegate = self
+        
         self.imageView.image = image
     }
 
@@ -26,7 +29,4 @@ class UserDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-
 }

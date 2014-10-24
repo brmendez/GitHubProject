@@ -15,6 +15,7 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     var origin : CGRect?
     var imageView : UIImageView?
+    var networkController : NetworkController!
     
     var userArray = [User]()
     
@@ -22,21 +23,26 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         println()
         
-        
-        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.networkController = appDelegate.networkController
+        self.navigationController?.delegate = appDelegate
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.navigationController?.delegate = self
-        
         searchBar.showsScopeBar = true
         searchBar.delegate = self
         
     }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.navigationController?.delegate = self
+//
+//    }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.delegate = nil
-    }
+//    override func viewWillDisappear(animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.delegate = nil
+//    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.userArray.count
@@ -72,12 +78,12 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
         viewController.reverseOrigin = self.origin!
 
         self.navigationController?.pushViewController(viewController, animated: true)
-//            self.splitViewController?.showDetailViewController(viewController, sender: self)
     }
     
     //FINISH MAKING SEARCHBAR WORK
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         var userSearch = searchBar.text
+
         
         NetworkController.sharedInstance.fetchGitHub(userSearch, type: FetchType.Users) { (errorDescription, returnedArray) -> (Void) in
             self.userArray = returnedArray as [User]
@@ -85,25 +91,8 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // This is called whenever during all navigation operations
-        
-        // Only return a custom animator for two view controller types
-        if let mainViewController = fromVC as? UsersViewController {
-            let animator = ShowImageAnimator()
-            animator.origin = mainViewController.origin
-            
-            return animator
-        }
-        else if let imageViewController = fromVC as? UserDetailViewController {
-            let animator = HideImageAnimator()
-            animator.origin = imageViewController.reverseOrigin
-            
-            return animator
-        }
-        
-        // All other types use default transition
-        return nil
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        return text.validateString()
     }
     
 }

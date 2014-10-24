@@ -56,6 +56,24 @@
             </objects>
             <point key="canvasLocation" x="1568" y="-86"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="CWj-1I-kUc">
+            <objects>
+                <viewController id="fxW-Qk-QoG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ItG-LO-NE3"/>
+                        <viewControllerLayoutGuide type="bottom" id="9S6-Sm-P01"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ru6-6K-Xwa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VFZ-yO-R7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2208" y="-86"/>
+        </scene>
         <!--Users View Controller-->
         <scene sceneID="aRC-4h-338">
             <objects>
@@ -177,7 +195,6 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="979-R8-BmZ" firstAttribute="top" secondItem="8Qt-vQ-S5c" secondAttribute="topMargin" id="7ev-tr-NQZ"/>
                             <constraint firstItem="20e-vv-3iB" firstAttribute="top" secondItem="979-R8-BmZ" secondAttribute="bottom" id="96u-ey-mfz"/>
@@ -307,7 +324,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="78X-up-52n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-656" y="352"/>
+            <point key="canvasLocation" x="-626" y="352"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="O2b-Ie-dTg">
@@ -317,7 +334,7 @@
                         <viewControllerLayoutGuide type="top" id="5AT-jF-x5O"/>
                         <viewControllerLayoutGuide type="bottom" id="UtZ-kI-YhJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uDN-aY-Zwn">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="uDN-aY-Zwn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -342,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SaI-qV-9KL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2205" y="602"/>
+            <point key="canvasLocation" x="2219" y="602"/>
         </scene>
     </scenes>
 </document>
