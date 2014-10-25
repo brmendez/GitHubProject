@@ -23,6 +23,7 @@ class NetworkController {
     let scope = "scope=user,repo"
     let redirectURL = "redirect_uri=GitHubProject://test"
     let githubPOSTURL = "https://github.com/login/oauth/access_token"
+//    let repoGrabURL = "https://api.github.com/search/users?q="
     
     var imageQueue = NSOperationQueue()
     
@@ -96,6 +97,7 @@ class NetworkController {
         let searchUserURL =  "https://api.github.com/search/users?q="
         //implemented
         let searchReposURL = "https://api.github.com/search/repositories?q="
+        
         let cleanString = searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: nil, range: nil)
         var url : NSURL?
         

@@ -15,6 +15,8 @@ class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var url : NSURL?
+    
     var repoArray = [Repo]()
     var test: String?
 
@@ -37,6 +39,19 @@ class ReposViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = repo.name
         
         return cell
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let webViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WEB_VIEW") as WebViewController
+        let cell = tableView.dequeueReusableCellWithIdentifier("REPO_CELL", forIndexPath: indexPath) as UITableViewCell
+//        let selectedRepo = self.repoArray[indexPath.row]
+        webViewController.repo = self.repoArray[indexPath.row]
+        
+        
+        
+        self.navigationController?.pushViewController(webViewController, animated: true)
+        
     }
     
     

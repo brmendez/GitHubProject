@@ -12,9 +12,11 @@ import UIKit
 class Repo {
     
     var name : String
+    var userReposURL : String
     
-    init (name: String) {
+    init (name: String, userRepoURL: String) {
         self.name = name
+        self.userReposURL = userRepoURL
     }
     
     class func parseJSONDataIntoRepo(rawJSONData : NSData) -> [Repo] {
@@ -30,7 +32,9 @@ class Repo {
                 for objectInArray in itemsArray {
                     
                     var tempName = objectInArray["name"] as String
-                    var newRepoObject = Repo(name: tempName)
+                    var repoURL = objectInArray["html_url"] as String
+                    println(repoURL)
+                    var newRepoObject = Repo(name: tempName, userRepoURL: repoURL)
                     repoArray.append(newRepoObject)
                 }
                 
@@ -38,4 +42,18 @@ class Repo {
         }
         return repoArray
     }
+    
+//    class func parseJSONDataForWebview(rawJSONData : NSData) -> [Repo] {
+//        var error : NSError?
+//        
+//        var repoArray = [Repo]()
+//        
+//        if let itemsArray = JSONDictionary["items"] as? NSArray {
+//            
+//            for objectInArray in itemsArray["repos_url"] as String
+//            var newRepoObject = Repo(name: NSURL(string: <#String#>))
+//        }
+//    }
+    
+    
 }

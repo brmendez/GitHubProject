@@ -15,7 +15,7 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     var origin : CGRect?
     var imageView : UIImageView?
-    var networkController : NetworkController!
+
     
     var userArray = [User]()
     
@@ -24,7 +24,6 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
         println()
         
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        self.networkController = appDelegate.networkController
         self.navigationController?.delegate = appDelegate
         
         self.collectionView.delegate = self
@@ -84,7 +83,7 @@ class UsersViewController: UIViewController, UICollectionViewDelegate, UICollect
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         var userSearch = searchBar.text
 
-        
+         
         NetworkController.sharedInstance.fetchGitHub(userSearch, type: FetchType.Users) { (errorDescription, returnedArray) -> (Void) in
             self.userArray = returnedArray as [User]
             self.collectionView.reloadData()

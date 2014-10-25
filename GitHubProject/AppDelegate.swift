@@ -13,8 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate {
 
     var window: UIWindow?
-    var networkController = NetworkController()
-    
+//    var networkController = NetworkController()
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         println("App delegate: \(url)")
@@ -29,19 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
         
         // Only return a custom animator for two view controller types
         if let mainViewController = fromVC as? UsersViewController {
-            let animator = ShowImageAnimator()
-            animator.origin = mainViewController.origin
-            
-            return animator
+            if let userDetailView = toVC as? UserDetailViewController {
+                let animator = ShowImageAnimator()
+                animator.origin = mainViewController.origin
+                
+                return animator
+            }
+        } else if let mainViewController = fromVC as? UserDetailViewController {
+            if let userSearchView = toVC as? UsersViewController {
+                let animator = HideImageAnimator()
+                animator.origin = mainViewController.reverseOrigin
+                
+                return animator
+            }
         }
-        else if let imageViewController = fromVC as? UserDetailViewController {
-            let animator = HideImageAnimator()
-            animator.origin = imageViewController.reverseOrigin
-            
-            return animator
-        }
-        
-        // All other types use default transition
         return nil
     }
     
