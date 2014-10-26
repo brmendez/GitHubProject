@@ -145,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="1568" y="602"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="dHH-yB-eM0">
             <objects>
-                <viewController id="7os-PJ-7gS" sceneMemberID="viewController">
+                <viewController id="7os-PJ-7gS" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="GitHubProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eGT-Pj-Rcn"/>
                         <viewControllerLayoutGuide type="bottom" id="rsV-Xr-2bd"/>
@@ -156,8 +156,30 @@
                     <view key="view" contentMode="scaleToFill" id="PSG-Zv-T2m">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="45e-u7-Nga">
+                                <rect key="frame" x="200" y="127" width="200" height="200"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrP-dU-DG8">
+                                <rect key="frame" x="279" y="335" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="45e-u7-Nga" firstAttribute="leading" secondItem="PSG-Zv-T2m" secondAttribute="leading" constant="200" id="COv-TU-k4h"/>
+                            <constraint firstItem="FrP-dU-DG8" firstAttribute="top" secondItem="45e-u7-Nga" secondAttribute="bottom" constant="8" id="RB6-uc-lLz"/>
+                            <constraint firstAttribute="trailing" secondItem="45e-u7-Nga" secondAttribute="trailing" constant="200" id="fI9-ZO-SsL"/>
+                            <constraint firstAttribute="bottom" secondItem="45e-u7-Nga" secondAttribute="bottom" constant="273" id="frx-Ed-1by"/>
+                            <constraint firstAttribute="centerX" secondItem="FrP-dU-DG8" secondAttribute="centerX" id="lv3-TT-7Hc"/>
+                            <constraint firstItem="45e-u7-Nga" firstAttribute="top" secondItem="eGT-Pj-Rcn" secondAttribute="bottom" constant="127" id="qOp-2V-mnT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="45e-u7-Nga" id="hxO-9y-7Uv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LwK-bU-jGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

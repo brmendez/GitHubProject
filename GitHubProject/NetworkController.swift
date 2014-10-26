@@ -11,12 +11,14 @@ import UIKit
 
 
 enum FetchType {
-    case Repos, Users
+    case Repos, Users, MyProfile
 }
 
 
 class NetworkController {
     
+    var mySession : NSURLSession?
+    var accessToken : String?
     let clientID = "client_id=90540d88c4b7fd51e6bb"
     let clientSecret = "client_secret=1d20b4db83c3603def8e69d49fe7697c7e0dd75f"
     let githubOAuthURL = "https://github.com/login/oauth/authorize?"
@@ -26,6 +28,20 @@ class NetworkController {
 //    let repoGrabURL = "https://api.github.com/search/users?q="
     
     var imageQueue = NSOperationQueue()
+    
+    
+    init (){
+        if self.mySession == nil {
+            if let tokenValue = NSUserDefaults.standardUserDefaults().valueForKey("MyKey") as? String {
+                self.accessToken = tokenValue
+                var sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+                var HTTPAdditionalHeaders = ["Authorization" : "token \(self.accessToken!)"]
+                sessionConfiguration.HTTPAdditionalHeaders = HTTPAdditionalHeaders
+                self.mySession = NSURLSession(configuration: sessionConfiguration)
+            }
+        }
+        
+    }
     
     class var sharedInstance: NetworkController {
         struct Static {
@@ -74,6 +90,11 @@ class NetworkController {
                     let response = tokenResponse as String
                     let token = response.componentsSeparatedByString("&").first?.componentsSeparatedByString("=").last
                     
+                    var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+                    configuration.HTTPAdditionalHeaders = ["Authorization": "token accessToken"]
+                    self.mySession = NSURLSession(configuration: configuration)
+                    
+                    
                     NSUserDefaults.standardUserDefaults().setObject(NSString(string: token!), forKey: "OAuth")
                     NSUserDefaults.standardUserDefaults().synchronize()
                 case 400...499:
@@ -89,7 +110,7 @@ class NetworkController {
         dataTask.resume()
     }
 
-    func fetchGitHub(searchString: String, type: FetchType, completionHandler: (errorDescription: String?, returnedArray: [AnyObject]) -> (Void)) {
+    func fetchGitHub(searchString: String?, type: FetchType, completionHandler: (errorDescription: String?, returnedArray: [AnyObject]) -> (Void)) {
         let session = NSURLSession.sharedSession()
         
         
@@ -97,15 +118,21 @@ class NetworkController {
         let searchUserURL =  "https://api.github.com/search/users?q="
         //implemented
         let searchReposURL = "https://api.github.com/search/repositories?q="
+        let myProfileURL = "https://api.github.com/user"
+        var cleanString : String?
         
-        let cleanString = searchString.stringByReplacingOccurrencesOfString(" ", withString: "+", options: nil, range: nil)
+        if searchString != nil {
+            cleanString = searchString!.stringByReplacingOccurrencesOfString(" ", withString: "+", options: nil, range: nil)
+        }
         var url : NSURL?
         
         switch type {
         case .Users:
-            url = NSURL(string: (searchUserURL + cleanString))?
+            url = NSURL(string: (searchUserURL + cleanString!))?
         case .Repos:
-            url = NSURL(string: (searchReposURL + cleanString))?
+            url = NSURL(string: (searchReposURL + cleanString!))?
+        case .MyProfile:
+            url = NSURL(string: "https://api.github.com/user")
         default:
             println("Wrong search type")
         }
@@ -115,7 +142,7 @@ class NetworkController {
         
         request.setValue("token " + token, forHTTPHeaderField: "Authorization")
         
-        let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if let httpResponse = response as? NSHTTPURLResponse {
                 switch httpResponse.statusCode {
                 case 200...299:
@@ -127,6 +154,7 @@ class NetworkController {
                 case .Users:
                     println("in users case: \(returnedArray)")
                     returnedArray = User.parseJSONDataIntoUser(data)
+                    println(data)
                 default:
                     println("No parsed info returned")
                 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4502E5F919FC73CA0065815C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4502E5F819FC73CA0065815C /* ProfileViewController.swift */; };
 		4530B58B19F5D7E200B9DCCC /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530B58A19F5D7E200B9DCCC /* Repo.swift */; };
 		4530B58E19F5E65900B9DCCC /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530B58D19F5E65900B9DCCC /* ReposViewController.swift */; };
 		453E832D19F84A5500E0CBC3 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453E832C19F84A5500E0CBC3 /* UsersViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4502E5F819FC73CA0065815C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4530B58A19F5D7E200B9DCCC /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		4530B58D19F5E65900B9DCCC /* ReposViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
 		453E832C19F84A5500E0CBC3 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				4530B58D19F5E65900B9DCCC /* ReposViewController.swift */,
 				453E832C19F84A5500E0CBC3 /* UsersViewController.swift */,
 				45CD764E19F99D4E008EBE82 /* UserDetailViewController.swift */,
+				4502E5F819FC73CA0065815C /* ProfileViewController.swift */,
 				45E6FBAF19FB0C4E00974E65 /* WebViewController.swift */,
 				45BA150819F5B5F90017B3EB /* NetworkController.swift */,
 			);
@@ -284,6 +287,7 @@
 				45E6FBAC19FB010D00974E65 /* Extension.swift in Sources */,
 				4530B58B19F5D7E200B9DCCC /* Repo.swift in Sources */,
 				45E6FBB019FB0C4E00974E65 /* WebViewController.swift in Sources */,
+				4502E5F919FC73CA0065815C /* ProfileViewController.swift in Sources */,
 				45BA14E419F5ABE20017B3EB /* AppDelegate.swift in Sources */,
 				45441FF119F5C2910097C1C6 /* SplitViewContainerController.swift in Sources */,
 			);
